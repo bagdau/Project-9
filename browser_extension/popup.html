@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Мониторинг</title>
+  <style>
+    body { font-family: Arial; padding: 10px; width: 320px; }
+    input, textarea, button { width: 100%; margin-bottom: 10px; }
+    #comments { max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 5px; font-size: 14px; }
+    #loadingIcon { font-size: 14px; display: none; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h3>📊 AI Мониторинг</h3>
+  <p id="apiStatus">⏳ Проверка сервера...</p>
+
+  <input id="author" type="text" placeholder="Имя автора" />
+  <input id="postId" type="text" placeholder="ID поста" />
+  <textarea id="comment" rows="3" placeholder="Комментарий..."></textarea>
+  <button id="send">Отправить</button>
+  <p id="status"></p>
+
+  <h3>Instagram Comments Tool</h3>
+  <button id="upload-comments" style="margin-top: 10px;">
+    📥 Загрузить вычитанные комментарии
+  </button>
+
+  <hr />
+  <button id="load">📥 Загрузить комментарии</button>
+  <div id="comments">Комментарии появятся здесь</div>
+
+  <hr />
+  <button id="startReading">📖 Начать чтение комментариев</button>
+  <div id="loadingIcon">⏳ Загрузка чтения...</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

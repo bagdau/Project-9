@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Социальный мониторинг",
+    "version": "2.0",
+    "description": "Сбор отзывов граждан с открытых социальных платформ для аналитики и отчётности.",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "https://www.instagram.com/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16":  "icon/icon16.png",
+        "48":  "icon/icon48.png",
+        "128": "icon/icon128.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.instagram.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "icons": {
+      "16":  "icon/icon16.png",
+      "48":  "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
+  }
+  

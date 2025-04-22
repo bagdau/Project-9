@@ -1,0 +1,8 @@
+services:
+  flask_api:
+    build:
+      context: ./flask_api
+    container_name: flask_insta_excel_api
+    ports:
+      - "8010:8010"
+    restart: always

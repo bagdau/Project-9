@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Социальный мониторинг — Демосервер</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background: #f7f7f7;
+    }
+    h1 { color: #333; }
+    button { margin-top: 10px; width: 100%; padding: 10px; font-weight: bold; }
+    textarea, input { width: 100%; margin-top: 5px; margin-bottom: 10px; padding: 8px; }
+    #log { margin-top: 20px; white-space: pre-wrap; background: #fff; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>👋 Добро пожаловать!</h1>
+  <p>Этот интерфейс подключён к локальному серверу Flask.</p>
+
+  <h2>📤 Отправить комментарий</h2>
+  <input type="text" id="author" placeholder="Имя автора">
+  <input type="text" id="post_id" placeholder="ID поста">
+  <textarea id="comment" rows="3" placeholder="Комментарий..."></textarea>
+  <button onclick="sendComment()">Отправить (POST)</button>
+
+  <h2>📥 Получить список комментариев</h2>
+  <button onclick="getComments()">Загрузить (GET)</button>
+
+  <h2>🔎 Проверить соединение с сервером</h2>
+  <button onclick="pingServer()">Ping сервер</button>
+
+  <div id="log">📝 Лог будет здесь...</div>
+
+  <script>
+    const SERVER = "http://127.0.0.1:8010";
+
+    function log(msg) {
+      document.getElementById("log").textContent = msg;
+    }
+
+    async function pingServer() {
+      try {
+        const res = await fetch(`${SERVER}/ping`);
+        const json = await res.json();
+        log("✅ Сервер отвечает: " + JSON.stringify(json));
+      } catch (err) {
+        log("❌ Сервер недоступен!");
+      }
+    }
+
+    async function sendComment() {
+      const author = document.getElementById("author").value;
+      const post_id = document.getElementById("post_id").value;
+      const comment = document.getElementById("comment").value;
+
+      try {
+        const res = await fetch(`${SERVER}/webhook`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ author, post_id, comment })
+        });
+        const json = await res.json();
+        log("📤 Отправлено: " + JSON.stringify(json, null, 2));
+      } catch (err) {
+        log("❌ Ошибка при отправке: " + err);
+      }
+    }
+
+    async function getComments() {
+      try {
+        const res = await fetch(`${SERVER}/comments`);
+        const json = await res.json();
+        log("📥 Получено: " + JSON.stringify(json, null, 2));
+      } catch (err) {
+        log("❌ Ошибка получения: " + err);
+      }
+    }
+  </script>
+</body>
+</html>
