@@ -18,12 +18,8 @@
 ---
 
 ## Stack Techs
-Python 3.9
-Javascript
-Json
-HTML
-Docker
-
+## Python 3.9 | Javascript | Json | HTML | Docker  <------  `(*>﹏<*)′ ##
+ 
 ## 🛠 Структура проекта
 
 ```bash
