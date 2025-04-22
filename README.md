@@ -25,7 +25,7 @@
 # Разработчики # 
    _____________________________________________________________________________________________________
 ## || 🐳⚙️ Bagdaulet Koptileu || ⚙️ & AI Azamkulov Shahruz || 🖥️ & AI Asem Mukanova ||                |
-##         Backend Developer            Backend Developer           Frontend Developer UI/UX Designer   |
+##         Backend Developer    ||     Backend Developer     ||     Frontend Developer UI/UX Designer   |
    _____________________________________________________________________________________________________| 
 
    
